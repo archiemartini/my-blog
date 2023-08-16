@@ -10,9 +10,9 @@ import useUser from '../hooks/useUser'
 
 
 const ArticlePage = () => {
-  const [articleInfo, setArticleInfo] = useState<ArticleInfo>({ upvotes: 0, comments: [] });
-
-  const { articleId } = useParams()
+  const [articleInfo, setArticleInfo] = useState<ArticleInfo>({ upvotes: 0, comments: [], canUpvote: false });
+  const { canUpvote } = articleInfo;
+  const { articleId } = useParams();
 
   const { user, isLoading } = useUser();
 
@@ -25,8 +25,10 @@ const ArticlePage = () => {
       setArticleInfo(newArticleInfo)
     }
 
-    loadArticleInfo()
-  }, [])
+    if (isLoading) {
+      loadArticleInfo()
+    }
+  }, [isLoading, user])
 
   const article: Article | undefined = articles.find(article => article.name === articleId)
 
@@ -47,7 +49,7 @@ const ArticlePage = () => {
     <h1>{article.title}</h1>
     <div className='upvotes-section'>
       {user
-          ? <button onClick={addUpvote}>Upvote</button>
+          ? <button onClick={addUpvote}>{canUpvote ? 'Upvote' : 'Already Upvoted'}</button>
           : <button>Log in to upvote</button>
       }
       <p>This article has {articleInfo.upvotes} upvote(s)</p>

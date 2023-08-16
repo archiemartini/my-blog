@@ -4,7 +4,8 @@ import useUser from "../hooks/useUser";
 
 export interface ArticleInfo {
   upvotes: number;
-  comments: Comment[]
+  comments: Comment[];
+  canUpvote: boolean;
 }
 
 const AddCommentForm = ({ 
@@ -36,23 +37,13 @@ const AddCommentForm = ({
   return (
     <div className="add-comment-form">
       <h3>Add a Comment</h3>
-      <label>
-        Name:
-        <input 
-          type="text" 
-          value={name} 
-          onChange={e => setName(e.target.value)}
-        />
-      </label>
-      <label>
-        Comment:
+      {user && <p>You are posting as {user.email}</p>}
         <textarea 
           rows={4} 
           cols={50} 
           value={commentText} 
           onChange={e => setCommentText(e.target.value)} 
         />
-      </label>
       <button onClick={addComment}>Add Comment</button>
     </div>
   )
