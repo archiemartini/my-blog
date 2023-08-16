@@ -13,21 +13,21 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-      <h1>My Blog</h1>
-      <NavBar/>
-      <div id='page-body'>
-        <Routes>
-          <Route path="/" element={<HomePage/>} />
-          <Route path="/about" element={<AboutPage/>} />
-          <Route path="/articles" element={<ArticlesListPage/>} />
-          <Route path="/articles/:articleId" element={<ArticlePage/>} />
-          <Route path="/login" element={<LoginPage/>} />
-          <Route path="/create-account" element={<CreateAccountPage/>} />
-          <Route path="*" element={<NotFoundPage/>} />
-        </Routes>
+        <h1>My Blog</h1>
+        <NavBar />
+        <div id="page-body">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/articles" element={<ArticlesListPage />} />
+            <Route path="/articles/:articleId" element={<ArticlePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/create-account" element={<CreateAccountPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
       </div>
-      </div>
-   </BrowserRouter>
+    </BrowserRouter>
   );
 }
 
