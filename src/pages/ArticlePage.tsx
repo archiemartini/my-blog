@@ -4,9 +4,12 @@ import { useParams } from 'react-router-dom'
 import {Article, articles} from './article-content'
 import NotFoundPage from './NotFoundPage'
 import { CommentsList } from '../components/CommentsList'
+import AddCommentForm from '../components/AddCommentForm'
+import { ArticleInfo } from '../components/AddCommentForm'
+
 
 const ArticlePage = () => {
-  const [articleInfo, setArticleInfo] = useState({ upvotes: 0, comments: [] });
+  const [articleInfo, setArticleInfo] = useState<ArticleInfo>({ upvotes: 0, comments: [] });
 
   const { articleId } = useParams()
   console.log(articleInfo)
@@ -43,6 +46,10 @@ const ArticlePage = () => {
     {article.content.map(paragraph => (
       <p>{paragraph}</p>
     ))}
+    <AddCommentForm 
+      articleName={articleId} 
+      onArticleUpdated={setArticleInfo}
+    />
     <CommentsList comments={articleInfo.comments} />
     </>
   );

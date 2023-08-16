@@ -13,7 +13,7 @@ function App() {
       <div className="App">
       <h1>My Fkn Blog</h1>
       <NavBar/>
-      <div className='center'>
+      <div id='page-body'>
         <Routes>
           <Route path="/" element={<HomePage/>} />
           <Route path="/about" element={<AboutPage/>} />

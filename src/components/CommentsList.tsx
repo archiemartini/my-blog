@@ -3,7 +3,7 @@ export interface Comment {
   text: string
 }
 
-export const CommentsList = ({ comments }: { comments: Comment[]}) => (
+export const CommentsList = ({ comments }: { comments: any[]}) => (
   <>
   <h3>Comments:</h3>
   {comments && comments.map(comment => (
